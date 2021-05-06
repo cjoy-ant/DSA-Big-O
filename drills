@@ -1,0 +1,446 @@
+https://replit.com/@cjoyantonio/DSA-bigOnotation#drills.js
+
+1. DOG PLAYMATE
+1) Constant O(1) - you are only asking once
+2) Linear O(n) - the time it takes to complete this task is directly related to the number of people you need to ask
+
+2. EVEN OR ODD
+
+Constant O(1) - the same function occurs once regardless of the input
+
+3. ARE YOU HERE?
+Polynomial O(n^2) - requires 2 levels of looping over an input
+
+4. DOUBLER
+Linear O(n) - time is directly related to size of input/array length
+
+5. NAIVE SEARCH
+Linear O(n) - time is directly related to the size of the input/array length
+
+6. CREATING PAIRS
+Polynomial O(n^2) - requires 2 levels of looping over an input/array
+
+7. COMPUTE THE SEQUENCE
+Linear O(n) - time is directly related to the size of input/number
+
+e.g., compute(5) prints the first 5 numbers in the Fibonacci sequence,
+compuete(10) prints the first 10
+
+8. AN EFFICIENT SEARCH
+Logarithmic O(log(n)) - each time it loops through, it cuts the input in half
+
+9. RANDOM ELEMENT
+Constant O(1) - the function only occurs once regardless of input size
+
+10. WHAT AM I?
+????
+
+11. TOWER OF HANOI
+????
+
+***
+
+12. ITERATIVE VERSION
+
+// 1. Counting Sheep
+
+RECUSIVE:
+
+const countSheep = (numSheep) => {
+  if (numSheep === 0) {
+    return "All sheep jumped over the fence"
+  } else {
+    console.log(numSheep + ": Another sheep jumped over the fence")
+    return countSheep(numSheep - 1)
+  }
+}
+
+let numSheep = 3;
+console.log(countSheep(numSheep))
+
+ITERATIVE:
+
+const countSheep = (numSheep) => {
+  for (let i=numSheep; i > 0; i--){
+    console.log(`${i}: Another sheep jumped over the fence`)
+  }
+  return "All sheep jumped over the fence"
+}
+
+const numSheep = 3
+console.log(countSheep(numSheep))
+
+
+// 2. Power Calculator
+
+RECURSIVE:
+
+const powerCalculator = (base, exponent) => {
+  if (exponent < 0) {
+    return "exponent should be >= 0"
+  }
+  if (exponent === 0) {
+    return 1
+  }
+  return base * powerCalculator(base, exponent - 1)
+}
+
+let base = 10;
+let exponent = 2;
+console.log(powerCalculator(base, exponent))
+
+ITERATIVE:
+
+const powerCalculator = (base, exponent) => {
+  let answer = 0
+  for (let i=exponent-1; i > 0; i--) {
+    answer += base*base
+  }
+  return answer
+}
+
+let base = 10
+let exponent = 2
+console.log(powerCalculator(base, exponent))
+
+
+// 3. Reverse String
+
+RECURSIVE:
+const reverseString = (string) => {
+  if (string === "") {
+    return ""
+  }
+  return reverseString(string.substr(1)) + string.charAt(0)
+}
+
+let string = "Hello world!"
+console.log(reverseString(string))
+
+ITERATIVE:
+const reverseString = (string) => {
+  let newString = []
+  let stringArray = string.split('')
+  for (let i=string.length; i > 0; i--) {
+    newString.push(stringArray[i-1])
+  }
+  return newString.join('')
+}
+
+let string = "Hello world!"
+console.log(reverseString(string))
+
+
+// 4. nth Triangular Number
+
+RECURSIVE:
+
+const triangularNum = (num) => {
+  if (num === 0) {
+    return 0
+  } 
+  return num + triangularNum(num-1)
+}
+
+let num = 4
+console.log(triangularNum(num))
+
+ITERATIVE:
+
+const triangularNum = (num) => {
+  let answer = 0
+  for (let i=num; i > 0; i--){
+    answer += i
+  }
+  return answer
+}
+
+let num = 4
+console.log(triangularNum(num))
+
+// 5. String Splitter
+
+RECURSIVE:
+
+const stringSplitter = (string, slash) => {
+  if (string.indexOf(slash) === -1) {
+    return [string.slice(0, string.length)]
+  } 
+  return [string.slice(0, string.indexOf(slash)), ...stringSplitter(string.slice(string.indexOf(slash) + 1), slash)]
+}
+
+let string = "02/20/2020"
+console.log(stringSplitter(string, '/')) // ["02", "20", "2020"]
+]
+
+ITERATIVE:
+
+const stringSplitter = (string) => {
+  let newArray = []
+  let stringItem = ""
+  for(let i=0; i < string.length; i++){
+    if (string.charAt(i+2) === '/') {
+      stringItem = string.slice(i+0,i+2)
+      newArray.push(stringItem)
+    }
+    if (string.charAt(i-1) === '/' & string.charAt(i+2) !== '/') {
+      stringItem = string.slice(i,i+4)
+      newArray.push(stringItem)
+    }
+  }
+  return newArray
+}
+
+let string = "02/20/2020"
+console.log(stringSplitter(string)) // ["02", "20", "2020"]
+
+
+// 6. Fibonacci
+
+RECURSIVE:
+
+const Fibonacci = (num) => {
+  if (num <= 0) {
+    return "num should be > 0"
+  }
+  if (num === 1) {
+    return 1
+  } if (num === 2) {
+    return 1
+  }
+  return Fibonacci(num-1) + Fibonacci(num-2)
+}
+
+let num = 8
+console.log(Fibonacci(num))
+
+ITERATIVE:
+
+const Fibonacci = (num) => {
+  let sequence = [0, 1]
+  let answer = 0
+  if (num === 0) {
+    answer = sequence[0]
+  } if (num === 1) {
+    answer = sequence[1]
+  }
+  if (num > 1) {
+    let newItem = 0
+    for (let i=2; i < num; i++) {
+      newItem = sequence[i-1]+ sequence[i-2]
+      sequence.push(newItem)
+    }
+    answer = sequence[num-1]
+  }
+  return answer
+}
+
+let num = 8
+console.log(Fibonacci(num))
+
+
+// 7. Factorial
+
+RECURSIVE:
+const factorial = (num) => {
+  if (num === 0) {
+    return 0
+  } if (num === 1) {
+    return 1
+  }
+    return num * factorial(num-1)
+}
+
+let num = 5
+console.log(factorial(num))
+
+ITERATIVE:
+const factorial = (num) => {
+  let answer = 1
+  if (num === 0) {
+    return 0
+  }
+  if (num === 1){
+    return 1
+  }
+  if (num > 1) {
+    for (let i=num; i > 0; i--){
+      answer *= i
+    }
+    return answer
+  }
+}
+
+let num = 5 //120
+console.log(factorial(num))
+
+
+// 8. Find a way out of the maze
+
+let mySmallMaze = [
+  [' ', ' ', ' '],
+  [' ', '*', ' '],
+  [' ', ' ', 'e']
+];
+
+let maze = [
+  [' ', ' ', ' ', '*', ' ', ' ', ' '],
+  ['*', '*', ' ', '*', ' ', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', '*', '*', '*', '*', '*', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+
+// 9. Find ALL the ways out of the maze
+
+// 10. Anagrams
+
+const anagrams = (string) => {
+  if (string === "") {
+    return "string cannot be empty"
+  } 
+  if (string.length === 1) {
+    return [string]
+  }
+  let anagramsArray = []
+  let stringArray = string.split("")
+  for (let i=0; i < stringArray.length; i++) {
+    let results = anagrams(spliceString(stringArray, i).join(''))
+    for (let j=0; j < results.length; j++) {
+      anagramsArray.push(stringArray[i] + results[j])
+    }
+  }
+  return anagramsArray
+}
+
+const spliceString = (string, index) => {
+  let result = [...string]
+  result.splice(index, 1)
+  return result
+}
+
+let string = "tea"
+console.log(anagrams(string))
+
+// 11. Organization Chart
+
+const input = {
+  Zuckerberg: 
+  {
+    Schroepfer:
+    {
+      Bosworth:
+      {
+        Steve,
+        Kyle,
+        Andra
+      },
+      Zhao:
+      {
+        Richi,
+        Sofia,
+        Jen
+      }
+    },
+    Schrage:
+    {
+      VanDyck:
+      {
+        Sabri,
+        Miche,
+        Josh
+      },
+      Swain:
+      {
+        Blanc,
+        Tom,
+        Joe
+      }
+    },
+    Sandberg:
+    {
+      Goler:
+      {
+        Eddie,
+        Julie,
+        Annie
+      },
+      Hernandez:
+      {
+        Rowi,
+        Inga,
+        Morga
+      },
+      Moissinac:
+      {
+        Amy,
+        Chuck,
+        Vinni
+      },
+      Kelley:
+      {
+        Eric,
+        Ana,
+        Wes
+      }
+    }
+  }
+}
+
+// 12. Binary representation
+
+RECUSIVE:
+
+const binary = (num) => {
+  if (num === 0) {
+    return 0
+  }
+  let divByTwo = Math.floor(num/2)
+  let remainder = num % 2
+  if (divByTwo === 0) {
+    return remainder
+  }
+  return binary(divByTwo) + remainder.toString()
+}
+
+let num = 12
+console.log(binary(num))
+
+ITERATIVE:
+//NOT FINISHED
+const binary = (num) => {
+  let numArray =[]
+  let answer = []
+
+  if (num === 0){
+    return 0
+  }
+  for (let i=num; i>0; i--) {
+    if (i === num) {
+      numArray.push(Math.floor(i%2))
+    }
+    if (num%i === 2) {
+      numArray.push(Math.floor(i%2))
+    }
+    if ((num%i === 2) && (i/2 <= 2)) {
+      numArray.push(i-2)
+      break
+    }
+  }
+  // reverse the string
+  for (let i=numArray.length; i>0; i--){
+    answer.push(numArray[i-1])
+  }
+  return answer.join('')
+}
+
+let num = 12
+console.log(binary(num)) //1100
+// UNFINISHED
+
+***
+
+13. RECURSIVE BIG O
+
+
+14. ITERATIVE BIG O
