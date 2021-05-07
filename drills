@@ -389,7 +389,7 @@ const input = {
 
 // 12. Binary representation
 
-RECUSIVE:
+RECURSIVE:
 
 const binary = (num) => {
   if (num === 0) {
@@ -408,6 +408,7 @@ console.log(binary(num))
 
 ITERATIVE:
 //NOT FINISHED
+
 const binary = (num) => {
   let numArray =[]
   let answer = []
@@ -442,5 +443,48 @@ console.log(binary(num)) //1100
 
 13. RECURSIVE BIG O
 
+1. Counting Sheep
+Linear O(n)
+
+2. Power Calculator
+Linear O(n)
+
+3. Reverse String
+Linear O(n)
+
+4. nth Triangular Number
+Linear O(n)
+
+5. String Splitter
+Constant O(1)
+
+6. Fibonacci
+Linear O(n)
+
+7. Factorial
+Linear O(n)
+
+***
 
 14. ITERATIVE BIG O
+
+1. Counting Sheep
+Linear O(n)
+
+2. Power Calculator
+Linear O(n)
+
+3. Reverse String
+Linear O(n)
+
+4. nth Triangular Number
+Linear O(n)
+
+5. String Splitter
+Constant O(1)
+
+6. Fibonacci
+Linear O(n)
+
+7. Factorial
+Linear O(n)
